@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.12", "3.13"]
+        exclude:
+          - os: windows-latest
+            python: "3.11"
+          - os: windows-latest
+            python: "3.12"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          enable-cache: true
+
+      - name: Install locked environment
+        run: uv sync --all-groups --locked
+
+      - name: Run full positive and negative gate
+        run: uv run python scripts/verify.py
+
+      - name: Upload Python 3.13 evidence
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: apkg-lint-ci-evidence
+          path: |
+            coverage.xml
+            examples/broken-report.json
+            examples/broken-report.html
+            examples/broken-report.sarif
+          if-no-files-found: error
+
+  action-smoke:
+    name: Composite Action smoke
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Run repository Action
+        uses: ./
+        with:
+          path: examples/clean-modern.apkg
+          format: json
+          output: action-report.json
+          fail-on: warning
+
+      - name: Assert report structure
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("action-report.json").read_text())
+          assert report["summary"]["files"] == 1
+          assert report["summary"]["error"] == 0
+          PY
+
+  package:
+    name: Build release candidates
+    needs: [verify, action-smoke]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+
+      - name: Install locked environment
+        run: uv sync --all-groups --locked
+
+      - name: Build reproducible release candidates
+        run: uv run python scripts/package_release.py
+
+      - name: Upload release candidates
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: apkg-lint-release-candidates
+          path: release/*
+          if-no-files-found: error

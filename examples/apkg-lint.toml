@@ -1,0 +1,15 @@
+[apkg_lint]
+profile = "shared"
+fail_on = "warning"
+verify_media = true
+ignore = []
+
+[severity]
+MEDIA006 = "info"
+
+[limits]
+max_members = 100000
+max_uncompressed_mb = 4096
+max_database_mb = 2048
+max_control_mb = 64
+max_compression_ratio = 1000

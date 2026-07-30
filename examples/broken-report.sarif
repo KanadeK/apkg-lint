@@ -1,0 +1,689 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Cloze note 105 contains no cloze marker [notes/105]. Add at least one {{c1::deletion}} or change the note type."
+          },
+          "properties": {
+            "apkgLocation": "notes/105",
+            "evidence": "notetype=Broken Cloze"
+          },
+          "ruleId": "CLOZE001"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Cloze note 106 has marker/card mismatch [notes/106]. Edit the cloze markers, run Empty Cards, and re-export."
+          },
+          "properties": {
+            "apkgLocation": "notes/106",
+            "card_ordinals": [
+              0
+            ],
+            "evidence": "marker ordinals=[1], card ordinals=[0]",
+            "marker_ordinals": [
+              1
+            ]
+          },
+          "ruleId": "CLOZE002"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Card 9991 points to missing note 999999 [cards/9991]. Run Tools > Check Database, remove the orphan, and re-export."
+          },
+          "properties": {
+            "apkgLocation": "cards/9991",
+            "evidence": "nid=999999"
+          },
+          "ruleId": "DB001"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Note 109 points to missing notetype 9999 [notes/109]. Restore or change the note type in Anki, then re-export."
+          },
+          "properties": {
+            "apkgLocation": "notes/109",
+            "evidence": "mid=9999"
+          },
+          "ruleId": "DB002"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Card 9992 points to missing deck 999 [cards/9992]. Move the card to an existing deck in Anki and re-export."
+          },
+          "properties": {
+            "apkgLocation": "cards/9992",
+            "evidence": "did=999"
+          },
+          "ruleId": "DB003"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Media map entry 2 is missing from the archive [media/2:missing-member.png]. Run Tools > Check Media, restore the file, and re-export with media."
+          },
+          "properties": {
+            "apkgLocation": "media/2:missing-member.png",
+            "evidence": "filename='missing-member.png'"
+          },
+          "ruleId": "MEDIA001"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Media filename is unsafe or non-portable: 'CON.jpg' [media/3:CON.jpg]. Rename the media in Anki and update all references before re-exporting."
+          },
+          "properties": {
+            "apkgLocation": "media/3:CON.jpg",
+            "evidence": "Expected one NFC-normalized basename valid on Windows, macOS, and Linux."
+          },
+          "ruleId": "MEDIA004"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Referenced media is absent: 'missing.png' [notes/107/fields/0]. Add the media to Anki or remove the stale reference, then re-export."
+          },
+          "properties": {
+            "apkgLocation": "notes/107/fields/0",
+            "evidence": "referenced from 1 location(s)",
+            "locations": [
+              "notes/107/fields/0"
+            ]
+          },
+          "ruleId": "MEDIA005"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Referenced media is absent: 'missing-background.png' [notetypes/1000/css]. Add the media to Anki or remove the stale reference, then re-export."
+          },
+          "properties": {
+            "apkgLocation": "notetypes/1000/css",
+            "evidence": "referenced from 1 location(s)",
+            "locations": [
+              "notetypes/1000/css"
+            ]
+          },
+          "ruleId": "MEDIA005"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Note 101 has an empty first field [notes/101/fields/0]. Add a prompt or media reference to the first field, or delete the note."
+          },
+          "properties": {
+            "apkgLocation": "notes/101/fields/0",
+            "evidence": "notetype=Broken Basic"
+          },
+          "ruleId": "NOTE001"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Note 104 has 1 fields; Broken Basic defines 2 [notes/104]. Use Change Note Type or repair the fields in Anki, then re-export."
+          },
+          "properties": {
+            "apkgLocation": "notes/104",
+            "evidence": "fields=1, expected=2"
+          },
+          "ruleId": "NOTE003"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Template Card 1 references unknown field 'MissingField' [notetypes/1000/templates/0]. Correct the template field name in Anki's Cards editor."
+          },
+          "properties": {
+            "apkgLocation": "notetypes/1000/templates/0",
+            "evidence": "known fields=['Front', 'Back']"
+          },
+          "ruleId": "TEMPLATE001"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Media filenames collide across case-insensitive clients [media]. Give every media file a case-insensitively unique filename."
+          },
+          "properties": {
+            "apkgLocation": "media",
+            "evidence": "'Photo.png', 'photo.png'",
+            "filenames": [
+              "Photo.png",
+              "photo.png"
+            ]
+          },
+          "ruleId": "MEDIA007"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "2 notes in Broken Basic share the same first field [notetypes/1000]. Review with Anki's Find Duplicates tool and merge or distinguish the notes."
+          },
+          "properties": {
+            "apkgLocation": "notetypes/1000",
+            "evidence": "notes=[102, 103], normalized='duplicate'",
+            "normalized_sample": "duplicate",
+            "note_ids": [
+              102,
+              103
+            ]
+          },
+          "ruleId": "NOTE002"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Archive member '99' is not mapped [99]. Re-export from Anki instead of manually editing the APKG archive."
+          },
+          "properties": {
+            "apkgLocation": "99",
+            "evidence": "The member is not metadata, the collection, or a media-map entry."
+          },
+          "ruleId": "PKG002"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Shared-deck profile found learning progress [collection.anki21]. Export again with 'Include scheduling information' disabled, or use --profile backup when progress is intentional."
+          },
+          "properties": {
+            "apkgLocation": "collection.anki21",
+            "evidence": "revlog=1, scheduled_cards=1",
+            "review_count": 1,
+            "scheduled_cards": 1
+          },
+          "ruleId": "SHARE001"
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Template Card 1 front references no known field [notetypes/1000/templates/0/front]. Add a note field to the front template or remove the card template."
+          },
+          "properties": {
+            "apkgLocation": "notetypes/1000/templates/0/front",
+            "evidence": "front fields=['MissingField']"
+          },
+          "ruleId": "TEMPLATE002"
+        },
+        {
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "broken-legacy.apkg"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "4 mapped media file(s) are unused [media]. Review with Tools > Check Media and remove only files you no longer need."
+          },
+          "properties": {
+            "apkgLocation": "media",
+            "count": 4,
+            "evidence": "'CON.jpg', 'Photo.png', 'photo.png', 'unused.mp3'",
+            "sample": [
+              "CON.jpg",
+              "Photo.png",
+              "photo.png",
+              "unused.mp3"
+            ]
+          },
+          "ruleId": "MEDIA006"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/KanadeK/apkg-lint",
+          "name": "apkg-lint",
+          "rules": [
+            {
+              "id": "APKG000",
+              "name": "PackageReadError",
+              "shortDescription": {
+                "text": "Package could not be inspected"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "The collection database did not pass SQLite PRAGMA quick_check."
+              },
+              "id": "PKG001",
+              "name": "SQLiteintegritycheckfailed",
+              "shortDescription": {
+                "text": "SQLite integrity check failed"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "The APKG contains a member not declared by its collection or media map."
+              },
+              "id": "PKG002",
+              "name": "Unmappedarchivemember",
+              "shortDescription": {
+                "text": "Unmapped archive member"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A card points to a note that is absent from the package."
+              },
+              "id": "DB001",
+              "name": "Orphancard",
+              "shortDescription": {
+                "text": "Orphan card"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A note references a notetype that is absent from the package."
+              },
+              "id": "DB002",
+              "name": "Missingnotetype",
+              "shortDescription": {
+                "text": "Missing notetype"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A card references a deck that is absent from the package."
+              },
+              "id": "DB003",
+              "name": "Missingdeck",
+              "shortDescription": {
+                "text": "Missing deck"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A note has no text or media in its first field."
+              },
+              "id": "NOTE001",
+              "name": "Emptyfirstfield",
+              "shortDescription": {
+                "text": "Empty first field"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Multiple notes in one notetype normalize to the same first field."
+              },
+              "id": "NOTE002",
+              "name": "Duplicatefirstfield",
+              "shortDescription": {
+                "text": "Duplicate first field"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A note's field count differs from its notetype definition."
+              },
+              "id": "NOTE003",
+              "name": "Fieldcountmismatch",
+              "shortDescription": {
+                "text": "Field count mismatch"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A cloze notetype note contains no supported {{cN::...}} marker."
+              },
+              "id": "CLOZE001",
+              "name": "Clozenotehasnodeletion",
+              "shortDescription": {
+                "text": "Cloze note has no deletion"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "The card ordinals generated for a note do not match its cloze marker numbers."
+              },
+              "id": "CLOZE002",
+              "name": "Clozecardsandmarkersdisagree",
+              "shortDescription": {
+                "text": "Cloze cards and markers disagree"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A card template references a field that its notetype does not define."
+              },
+              "id": "TEMPLATE001",
+              "name": "Unknowntemplatefield",
+              "shortDescription": {
+                "text": "Unknown template field"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "A normal card template front does not reference any known note field."
+              },
+              "id": "TEMPLATE002",
+              "name": "Templatefronthasnofield",
+              "shortDescription": {
+                "text": "Template front has no field"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "The media map points to an archive member that does not exist."
+              },
+              "id": "MEDIA001",
+              "name": "Mappedmediamemberismissing",
+              "shortDescription": {
+                "text": "Mapped media member is missing"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "The unpacked media SHA-1 differs from the modern media map."
+              },
+              "id": "MEDIA002",
+              "name": "Mediahashmismatch",
+              "shortDescription": {
+                "text": "Media hash mismatch"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "The unpacked media size differs from the modern media map."
+              },
+              "id": "MEDIA003",
+              "name": "Mediasizemismatch",
+              "shortDescription": {
+                "text": "Media size mismatch"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A media filename is unsafe, non-normalized, or incompatible across common clients."
+              },
+              "id": "MEDIA004",
+              "name": "Unsafeornon-portablemediafilename",
+              "shortDescription": {
+                "text": "Unsafe or non-portable media filename"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A note or template references a local media filename absent from the package."
+              },
+              "id": "MEDIA005",
+              "name": "Referencedmediaismissing",
+              "shortDescription": {
+                "text": "Referenced media is missing"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "A mapped media file is not referenced by any note, template, or stylesheet."
+              },
+              "id": "MEDIA006",
+              "name": "Unusedmedia",
+              "shortDescription": {
+                "text": "Unused media"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Media filenames collide after Unicode normalization and case folding."
+              },
+              "id": "MEDIA007",
+              "name": "Collidingmediafilenames",
+              "shortDescription": {
+                "text": "Colliding media filenames"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A mapped media payload could not be decompressed or read completely."
+              },
+              "id": "MEDIA008",
+              "name": "Mediapayloadcouldnotbeverified",
+              "shortDescription": {
+                "text": "Media payload could not be verified"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "A shared-deck package contains review history or non-new scheduling state."
+              },
+              "id": "SHARE001",
+              "name": "Learningprogressincluded",
+              "shortDescription": {
+                "text": "Learning progress included"
+              }
+            }
+          ],
+          "version": "0.1.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

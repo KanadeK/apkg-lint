@@ -1,0 +1,240 @@
+{
+  "errors": [],
+  "reports": [
+    {
+      "counts": {
+        "archive_members": 8,
+        "archive_uncompressed_bytes": 24736,
+        "cards": 11,
+        "decks": 1,
+        "media": 6,
+        "notes": 9,
+        "notetypes": 2,
+        "reviews": 1
+      },
+      "findings": [
+        {
+          "evidence": "notetype=Broken Cloze",
+          "location": "notes/105",
+          "message": "Cloze note 105 contains no cloze marker",
+          "properties": {},
+          "remediation": "Add at least one {{c1::deletion}} or change the note type.",
+          "rule_id": "CLOZE001",
+          "severity": "error"
+        },
+        {
+          "evidence": "marker ordinals=[1], card ordinals=[0]",
+          "location": "notes/106",
+          "message": "Cloze note 106 has marker/card mismatch",
+          "properties": {
+            "card_ordinals": [
+              0
+            ],
+            "marker_ordinals": [
+              1
+            ]
+          },
+          "remediation": "Edit the cloze markers, run Empty Cards, and re-export.",
+          "rule_id": "CLOZE002",
+          "severity": "error"
+        },
+        {
+          "evidence": "nid=999999",
+          "location": "cards/9991",
+          "message": "Card 9991 points to missing note 999999",
+          "properties": {},
+          "remediation": "Run Tools > Check Database, remove the orphan, and re-export.",
+          "rule_id": "DB001",
+          "severity": "error"
+        },
+        {
+          "evidence": "mid=9999",
+          "location": "notes/109",
+          "message": "Note 109 points to missing notetype 9999",
+          "properties": {},
+          "remediation": "Restore or change the note type in Anki, then re-export.",
+          "rule_id": "DB002",
+          "severity": "error"
+        },
+        {
+          "evidence": "did=999",
+          "location": "cards/9992",
+          "message": "Card 9992 points to missing deck 999",
+          "properties": {},
+          "remediation": "Move the card to an existing deck in Anki and re-export.",
+          "rule_id": "DB003",
+          "severity": "error"
+        },
+        {
+          "evidence": "filename='missing-member.png'",
+          "location": "media/2:missing-member.png",
+          "message": "Media map entry 2 is missing from the archive",
+          "properties": {},
+          "remediation": "Run Tools > Check Media, restore the file, and re-export with media.",
+          "rule_id": "MEDIA001",
+          "severity": "error"
+        },
+        {
+          "evidence": "Expected one NFC-normalized basename valid on Windows, macOS, and Linux.",
+          "location": "media/3:CON.jpg",
+          "message": "Media filename is unsafe or non-portable: 'CON.jpg'",
+          "properties": {},
+          "remediation": "Rename the media in Anki and update all references before re-exporting.",
+          "rule_id": "MEDIA004",
+          "severity": "error"
+        },
+        {
+          "evidence": "referenced from 1 location(s)",
+          "location": "notes/107/fields/0",
+          "message": "Referenced media is absent: 'missing.png'",
+          "properties": {
+            "locations": [
+              "notes/107/fields/0"
+            ]
+          },
+          "remediation": "Add the media to Anki or remove the stale reference, then re-export.",
+          "rule_id": "MEDIA005",
+          "severity": "error"
+        },
+        {
+          "evidence": "referenced from 1 location(s)",
+          "location": "notetypes/1000/css",
+          "message": "Referenced media is absent: 'missing-background.png'",
+          "properties": {
+            "locations": [
+              "notetypes/1000/css"
+            ]
+          },
+          "remediation": "Add the media to Anki or remove the stale reference, then re-export.",
+          "rule_id": "MEDIA005",
+          "severity": "error"
+        },
+        {
+          "evidence": "notetype=Broken Basic",
+          "location": "notes/101/fields/0",
+          "message": "Note 101 has an empty first field",
+          "properties": {},
+          "remediation": "Add a prompt or media reference to the first field, or delete the note.",
+          "rule_id": "NOTE001",
+          "severity": "error"
+        },
+        {
+          "evidence": "fields=1, expected=2",
+          "location": "notes/104",
+          "message": "Note 104 has 1 fields; Broken Basic defines 2",
+          "properties": {},
+          "remediation": "Use Change Note Type or repair the fields in Anki, then re-export.",
+          "rule_id": "NOTE003",
+          "severity": "error"
+        },
+        {
+          "evidence": "known fields=['Front', 'Back']",
+          "location": "notetypes/1000/templates/0",
+          "message": "Template Card 1 references unknown field 'MissingField'",
+          "properties": {},
+          "remediation": "Correct the template field name in Anki's Cards editor.",
+          "rule_id": "TEMPLATE001",
+          "severity": "error"
+        },
+        {
+          "evidence": "'Photo.png', 'photo.png'",
+          "location": "media",
+          "message": "Media filenames collide across case-insensitive clients",
+          "properties": {
+            "filenames": [
+              "Photo.png",
+              "photo.png"
+            ]
+          },
+          "remediation": "Give every media file a case-insensitively unique filename.",
+          "rule_id": "MEDIA007",
+          "severity": "warning"
+        },
+        {
+          "evidence": "notes=[102, 103], normalized='duplicate'",
+          "location": "notetypes/1000",
+          "message": "2 notes in Broken Basic share the same first field",
+          "properties": {
+            "normalized_sample": "duplicate",
+            "note_ids": [
+              102,
+              103
+            ]
+          },
+          "remediation": "Review with Anki's Find Duplicates tool and merge or distinguish the notes.",
+          "rule_id": "NOTE002",
+          "severity": "warning"
+        },
+        {
+          "evidence": "The member is not metadata, the collection, or a media-map entry.",
+          "location": "99",
+          "message": "Archive member '99' is not mapped",
+          "properties": {},
+          "remediation": "Re-export from Anki instead of manually editing the APKG archive.",
+          "rule_id": "PKG002",
+          "severity": "warning"
+        },
+        {
+          "evidence": "revlog=1, scheduled_cards=1",
+          "location": "collection.anki21",
+          "message": "Shared-deck profile found learning progress",
+          "properties": {
+            "review_count": 1,
+            "scheduled_cards": 1
+          },
+          "remediation": "Export again with 'Include scheduling information' disabled, or use --profile backup when progress is intentional.",
+          "rule_id": "SHARE001",
+          "severity": "warning"
+        },
+        {
+          "evidence": "front fields=['MissingField']",
+          "location": "notetypes/1000/templates/0/front",
+          "message": "Template Card 1 front references no known field",
+          "properties": {},
+          "remediation": "Add a note field to the front template or remove the card template.",
+          "rule_id": "TEMPLATE002",
+          "severity": "warning"
+        },
+        {
+          "evidence": "'CON.jpg', 'Photo.png', 'photo.png', 'unused.mp3'",
+          "location": "media",
+          "message": "4 mapped media file(s) are unused",
+          "properties": {
+            "count": 4,
+            "sample": [
+              "CON.jpg",
+              "Photo.png",
+              "photo.png",
+              "unused.mp3"
+            ]
+          },
+          "remediation": "Review with Tools > Check Media and remove only files you no longer need.",
+          "rule_id": "MEDIA006",
+          "severity": "info"
+        }
+      ],
+      "ignored_rules": [],
+      "package_version": "legacy-2",
+      "schema_version": 11,
+      "sha256": "1abad55d04dfdaf01b5ddb226cd722186a3881fa26bd18da8449448cc3f089e0",
+      "source": "broken-legacy.apkg",
+      "summary": {
+        "error": 12,
+        "info": 1,
+        "warning": 5
+      }
+    }
+  ],
+  "schema": "https://raw.githubusercontent.com/KanadeK/apkg-lint/main/schema/apkg-lint-report-v1.schema.json",
+  "summary": {
+    "error": 12,
+    "files": 1,
+    "info": 1,
+    "operational_errors": 0,
+    "warning": 5
+  },
+  "tool": {
+    "name": "apkg-lint",
+    "version": "0.1.0"
+  }
+}

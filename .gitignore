@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.coverage
+.mypy_cache/
+.pytest_cache/
+.apkg-lint-pytest-*/
+.ruff_cache/
+coverage.xml
+htmlcov/
+build/
+dist/
+release/
+*.egg-info/
+*.tmp
+*.sqlite
+reports/

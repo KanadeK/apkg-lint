@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KanadeK/apkg-lint/main/schema/apkg-lint-report-v1.schema.json",
+  "title": "apkg-lint report v1",
+  "type": "object",
+  "required": ["schema", "tool", "summary", "errors", "reports"],
+  "properties": {
+    "schema": { "type": "string" },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "apkg-lint" },
+        "version": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "required": ["files", "operational_errors", "error", "warning", "info"],
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "message"],
+        "properties": {
+          "source": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "sha256",
+          "package_version",
+          "schema_version",
+          "counts",
+          "summary",
+          "ignored_rules",
+          "findings"
+        ],
+        "properties": {
+          "source": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "package_version": { "enum": ["legacy-1", "legacy-2", "latest"] },
+          "schema_version": { "type": "integer", "minimum": 11, "maximum": 18 },
+          "counts": {
+            "type": "object",
+            "additionalProperties": { "type": "integer", "minimum": 0 }
+          },
+          "summary": {
+            "type": "object",
+            "required": ["error", "warning", "info"],
+            "additionalProperties": { "type": "integer", "minimum": 0 }
+          },
+          "ignored_rules": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "rule_id",
+                "severity",
+                "message",
+                "location",
+                "evidence",
+                "remediation",
+                "properties"
+              ],
+              "properties": {
+                "rule_id": { "type": "string", "pattern": "^[A-Z]+[0-9]{3}$" },
+                "severity": { "enum": ["error", "warning", "info"] },
+                "message": { "type": "string" },
+                "location": { "type": "string" },
+                "evidence": { "type": "string" },
+                "remediation": { "type": "string" },
+                "properties": { "type": "object" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
