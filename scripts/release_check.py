@@ -181,6 +181,17 @@ def _clean_install(wheel: Path) -> None:
         )
 
 
+def _validate_release_tag() -> None:
+    """Require manual release reruns to use the package's version tag."""
+    release_tag = os.environ.get("RELEASE_TAG")
+    if release_tag is None and os.environ.get("GITHUB_REF_TYPE") == "tag":
+        release_tag = os.environ.get("GITHUB_REF_NAME")
+    if release_tag is not None:
+        expected_tag = f"v{__version__}"
+        if release_tag != expected_tag:
+            raise RuntimeError(f"release tag must be {expected_tag}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -194,10 +205,7 @@ def main() -> int:
         help="development-only: skip the isolated wheel installation",
     )
     args = parser.parse_args()
-    if os.environ.get("GITHUB_REF_TYPE") == "tag":
-        expected_tag = f"v{__version__}"
-        if os.environ.get("GITHUB_REF_NAME") != expected_tag:
-            raise RuntimeError(f"release tag must be {expected_tag}")
+    _validate_release_tag()
     _check_metadata()
     _check_history(allow_dirty=args.allow_dirty)
     _check_dependencies()
